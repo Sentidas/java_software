@@ -1,32 +1,23 @@
 package ru.sentidas.software.sanbox;
 
+import java.util.Scanner;
+
 public class Test {
   public static void main(String[] args) {
 
+    Square s = new Square(5);
 
+    System.out.println("площадь квадрата со стороной " + s.l + " = " + s.area());
 
-  double l = 5;
-    System.out.println("площадь квадрата со стороной " + l + " = " + area(l));
+    Rectangle r = new Rectangle(2, 3 );
 
-    double a = 2;
-    double b = 3;
-    System.out.println("площадь прямоугольника со сторонами " + a + " и " + b + " = " + rectangle(a,b));
-
+    System.out.println("площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
   }
 
+  public static void hello(String some) {
+    System.out.println("Привет " + some);
 
-
-  public static void hello (String some) {
-    System.out.println("ПРивет " + some);
-
-  }
-  public static double area (double l) {
-    return l* l;
-  }
-
-  public static double rectangle (double a, double b) {
-    return a * b;
   }
 
 }
