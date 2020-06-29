@@ -1,3 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "ru.sentidas.software.sanbox.Test"
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.testng:testng:7.1.0'
+}
