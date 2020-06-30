@@ -18,3 +18,4 @@ sandbox/out/production/classes/ru/sentidas/software/sanbox/Test.class
 sandbox/out/test/classes/ru/sentidas/software/sandbox/PointsTest.class
 addressbook-web-tests/out/test/classes/ru/sentidas/addressbook/CreateNewGroup.class
 addressbook-web-tests/gradle/wrapper/gradle-wrapper.jar
+*.class
