@@ -13,3 +13,8 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 sandbox/out/production/classes/ru/sentidas/software/sanbox/Point.class
+sandbox/out/production/classes/ru/sentidas/software/sanbox/Test.class
+.idea/gradle.xml
+sandbox/out/test/classes/ru/sentidas/software/sandbox/PointsTest.class
+addressbook-web-tests/out/test/classes/ru/sentidas/addressbook/CreateNewGroup.class
+addressbook-web-tests/gradle/wrapper/gradle-wrapper.jar

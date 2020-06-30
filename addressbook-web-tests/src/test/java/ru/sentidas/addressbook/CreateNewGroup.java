@@ -10,14 +10,10 @@ public class CreateNewGroup {
   private WebDriver wb;
 
 
-  @BeforeMethod(alwaysRun = true)
+  @BeforeMethod
   public void setUp() throws Exception {
     wb = new FirefoxDriver();
-    wb.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
-
-  @Test
-  public void testCreateNewGroup() throws Exception {
+    wb.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wb.get("http://localhost/addressbook/");
     wb.findElement(By.name("user")).click();
     wb.findElement(By.name("user")).clear();
@@ -26,6 +22,11 @@ public class CreateNewGroup {
     wb.findElement(By.name("pass")).clear();
     wb.findElement(By.name("pass")).sendKeys("secret");
     wb.findElement(By.id("LoginForm")).submit();
+  }
+
+  @Test
+  public void testGroupCreation() throws Exception {
+
     wb.findElement(By.linkText("groups")).click();
     wb.findElement(By.name("new")).click();
     wb.findElement(By.name("group_name")).click();
@@ -42,7 +43,7 @@ public class CreateNewGroup {
     wb.findElement(By.linkText("Logout")).click();
   }
 
-  @AfterMethod(alwaysRun = true)
+  @AfterMethod
   public void tearDown() throws Exception {
     wb.quit();
   }
