@@ -1,9 +1,10 @@
-package ru.sentidas.addressbook;
+package ru.sentidas.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.sentidas.addressbook.model.ContactData;
 
 public class GreateNewContact {
   private WebDriver wd;

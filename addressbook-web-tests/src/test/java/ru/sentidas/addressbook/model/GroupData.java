@@ -1,4 +1,4 @@
-package ru.sentidas.addressbook;
+package ru.sentidas.addressbook.model;
 
 public class GroupData {
   private final String name;
