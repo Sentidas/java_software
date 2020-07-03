@@ -4,7 +4,7 @@ import org.testng.annotations.*;
 import ru.sentidas.addressbook.model.GroupData;
 
 
-public class CreateNewGroup extends TestBase {
+public class GroupCreationTest extends TestBase {
 
 
   @Test
@@ -15,7 +15,6 @@ public class CreateNewGroup extends TestBase {
     app.getGroupHelper().fillGroupForm(new GroupData("test1", "test2", "test3"));
     app.getGroupHelper().submitGroupCreation();
     app.getGroupHelper().returnToGroupPage();
-
+    app.getGroupHelper().returnToGroupPage();
   }
-
 }
