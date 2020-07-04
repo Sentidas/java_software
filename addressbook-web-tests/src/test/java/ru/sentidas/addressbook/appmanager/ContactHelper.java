@@ -1,8 +1,11 @@
 package ru.sentidas.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.sentidas.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -15,13 +18,20 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"),contactData.getFirstname());
     type(By.name("lastname"),contactData.getLastname());
+
+    if(creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
     type(By.name("address"),contactData.getAddress());
     type(By.name("email"),contactData.getEmail());
     type(By.name("mobile"),contactData.getMobile());
   }
+
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
@@ -37,6 +47,7 @@ public class ContactHelper extends HelperBase {
   public void submitContactDelition() {
     click(By.xpath("//input[@value='Delete']"));
   }
+
 
   public void submitContactModification() {
     click(By.xpath("(//input[@name='update'])[2]"));
