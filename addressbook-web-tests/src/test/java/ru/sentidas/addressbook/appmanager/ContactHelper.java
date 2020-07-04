@@ -10,10 +10,17 @@ import ru.sentidas.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
+  private ApplicationManager app;
+
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
-
+  public void goToHomePage() {
+    if (isElementPresent(By.id("maintable"))){
+      return;
+    }
+    click(By.linkText("home"));
+  }
   public void initContactCreation() {
     click(By.linkText("add new"));
   }
@@ -55,5 +62,16 @@ public class ContactHelper extends HelperBase {
 
   public void submitAlertOfDeletion() {
     wd.switchTo().alert().accept();
+  }
+
+  public void createContact(ContactData contactData, boolean b) {
+    initContactCreation();
+    fillContactForm(contactData,b);
+    submitContactCreation();
+    goToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
