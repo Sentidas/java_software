@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.GroupData;
 
 import java.util.ArrayList;
@@ -77,4 +78,6 @@ public class GroupHelper extends HelperBase {
     }
     return groups;
   }
-}
+
+  }
+
