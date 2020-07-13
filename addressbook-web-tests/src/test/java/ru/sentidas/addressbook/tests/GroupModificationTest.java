@@ -19,7 +19,6 @@ public class GroupModificationTest  extends TestBase {
       app.getGroupHelper().createGroup(new GroupData("test3", null, null));
     }
     List<GroupData> before=app.getGroupHelper().getGroupList();
-    System.out.println(before);
     app.getGroupHelper().selectGroup(before.size()-1);
     System.out.println(before);
     app.getGroupHelper().initGroupModification();
@@ -28,7 +27,6 @@ public class GroupModificationTest  extends TestBase {
     app.getGroupHelper().submitGroupModification();
 
     List<GroupData> after =app.getGroupHelper().getGroupList();
-    System.out.println(after);
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(before.size() -1);
