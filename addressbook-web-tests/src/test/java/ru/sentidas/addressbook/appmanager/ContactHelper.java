@@ -50,9 +50,9 @@ public class ContactHelper extends HelperBase {
   public void selectContactForUpdate() {
     click(By.name("selected[]"));
   }
-  public void initContactEdition(int index) {
+  public void initContactEdition(int id) {
 
-    wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
   }
   public void submitContactDelition() {
     click(By.xpath("//input[@value='Delete']"));

@@ -20,7 +20,8 @@ public class ContactModificationTest extends TestBase {
     List<ContactData> before=app.getContactHelper().getContactList();
     System.out.println(before);
 
-    app.getContactHelper().initContactEdition(before.size()-1);
+    app.getContactHelper().initContactEdition(before.get(before.size()-1).getId());
+
     ContactData contact = new ContactData("Mi", "Petrova",
             "Volgograd, Mira, 5-98", "petrov@ya.ru", "89261547865", null);
     app.getContactHelper().fillContactForm(contact, false);
@@ -32,6 +33,7 @@ public class ContactModificationTest extends TestBase {
 
     before.remove(before.size() -1);
     before.add(contact);
+
     Comparator<? super ContactData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);
     after.sort(byId);
