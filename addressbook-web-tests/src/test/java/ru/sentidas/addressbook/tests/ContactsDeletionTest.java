@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.GroupData;
 
-public class ContactDeletionTest extends TestBase{
+public class ContactsDeletionTest extends TestBase{
 
   @Test
   public void testGroupCreation() throws Exception {
