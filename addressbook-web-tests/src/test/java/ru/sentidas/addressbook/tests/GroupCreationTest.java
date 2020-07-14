@@ -1,13 +1,10 @@
 package ru.sentidas.addressbook.tests;
 
-import org.aspectj.lang.annotation.Before;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import org.testng.internal.GroupsHelper;
 import ru.sentidas.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -17,11 +14,11 @@ public class GroupCreationTest extends TestBase {
   @Test
   public void testGroupCreation() throws Exception {
 
-    app.getNavigationHelper().goToGroupPage();
-    List<GroupData> before=app.getGroupHelper().getGroupList();
+    app.goTo().GroupPage();
+    List<GroupData> before=app.group().list();
     GroupData group = new GroupData("test11", null, null);
-    app.getGroupHelper().createGroup(group);
-    List<GroupData> after =app.getGroupHelper().getGroupList();
+    app.group().create(group);
+    List<GroupData> after =app.group().list();
     System.out.println(after);
     Assert.assertEquals(after.size(), before.size() +1);
 
