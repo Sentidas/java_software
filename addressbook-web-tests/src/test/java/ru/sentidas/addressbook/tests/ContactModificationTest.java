@@ -11,21 +11,23 @@ import java.util.List;
 public class ContactModificationTest extends TestBase {
 
   @Test
-  public void testGroupCreation() throws Exception {
+  public void testContactModification() throws Exception {
     if(!app.getContactHelper().isThereAContact()){
 
       app.getContactHelper().createContact(new ContactData("Vasia", "Petrovich",
-              "Volgograd, Mira, 5-98", "petrov@ya.ru", null, "test3"), true);
+              "Volgograd, Mira, 5-98", "petrov@ya.ru", null, null), true);
     }
     List<ContactData> before=app.getContactHelper().getContactList();
     System.out.println(before);
-    app.getContactHelper().initContactEdition();
+
+    app.getContactHelper().initContactEdition(before.size()-1);
     ContactData contact = new ContactData("Mi", "Petrova",
             "Volgograd, Mira, 5-98", "petrov@ya.ru", "89261547865", null);
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
     List<ContactData> after =app.getContactHelper().getContactList();
+    System.out.println(before);
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(before.size() -1);
@@ -34,7 +36,6 @@ public class ContactModificationTest extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(after, before);
-
   }
 }
 

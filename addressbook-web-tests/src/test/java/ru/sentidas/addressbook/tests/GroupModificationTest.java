@@ -20,9 +20,9 @@ public class GroupModificationTest  extends TestBase {
     }
     List<GroupData> before=app.getGroupHelper().getGroupList();
     app.getGroupHelper().selectGroup(before.size()-1);
-    System.out.println(before);
+
     app.getGroupHelper().initGroupModification();
-    GroupData group = new GroupData(before.get(before.size()-1).getId(), "test11", "юля", null);
+    GroupData group = new GroupData(before.get(before.size()-1).getId(), "test3", "юля", null);
     app.getGroupHelper().fillGroupForm(group);
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
