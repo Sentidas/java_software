@@ -3,13 +3,11 @@ package ru.sentidas.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-  public void setId(int id) {
-    this.id = id;
-  }
 
-  private  int id = Integer.MAX_VALUE;;
+
+  private int id = Integer.MAX_VALUE;;
   private String name;
-  private  String header;
+  private String header;
   private String footer;
 
 

@@ -23,10 +23,13 @@ public class GroupCreationTest extends TestBase {
 
     app.goTo().GroupPage();
     Groups before=app.group().all();
+    System.out.println("список до " + before);
+    System.out.println("размер до " + before.size());
     GroupData group = new GroupData().withName("test11");
     app.group().create(group);
     Groups after =app.group().all();
-    System.out.println(after);
+    System.out.println("список после " + after);
+    System.out.println("размер после " + after.size());
     assertThat(after.size(), equalTo(before.size()+1));
 
     assertThat(after, equalTo(
