@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.Contacts;
+import ru.sentidas.addressbook.model.GroupData;
 
 import java.util.Comparator;
 
@@ -16,35 +17,33 @@ public class ContactModificationTest extends TestBase {
   @BeforeMethod
   public void ensurePrecontions() {
     if(app.contact().all().size()==0){
-
-      app.contact().create(new ContactData().withFirstname("Vasia").withLastname("Petrovich")
-              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru"), true);
+      ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
+              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
+      app.contact().create(contact , true );
     }
   }
-
   @Test
   public void testContactModification() throws Exception {
 
     Contacts before=app.contact().all();
-    System.out.println("список до " + before);
-    System.out.println("размер до " + before.size());
+    //System.out.println("список до " + before);
+    //System.out.println("размер до " + before.size());
 
-    //ContactData modifiedContact = initContactEdition(before.iterator().next());
-    ContactData modifiedContact = app.contact().initContactEdition(before.iterator().next());
+    ContactData modifiedContact = before.iterator().next();
 
-    ContactData contact = new ContactData().withFirstname("Mi").withLastname("Petrova").withAddress("Volgograd, Mira, 5-98")
+    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Mi").withLastname("Petrova").withAddress("Volgograd, Mira, 5-98")
     .withEmail("petrov@ya.ru").withMobile("89261547865");
-    app.contact().fillContactForm(contact , false);
-    app.contact().submitContactModification();
-    app.contact().returnToHomePage();
+
+
+    app.contact().modify(contact);
+
     Contacts after =app.contact().all();
-    System.out.println("список после " + after);
-    System.out.println("размер после " + after.size());
+
+    //System.out.println("список после " + after);
+    //System.out.println("размер после " + after.size());
+
     assertThat(after.size(), equalTo(before.size()));
-
-
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));
-
   }
 }
 

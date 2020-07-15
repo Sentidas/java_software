@@ -26,8 +26,8 @@ public class GroupModificationTest  extends TestBase {
   public void testGroupModification() {
 
     Groups before=app.group().all();
-    System.out.println("список до " + before);
-    System.out.println("размер до " + before.size());
+    //System.out.println("список до " + before);
+    //System.out.println("размер до " + before.size());
     GroupData modifiedGroup = before.iterator().next();
 
     GroupData group = new GroupData()
@@ -36,11 +36,12 @@ public class GroupModificationTest  extends TestBase {
     app.group().modify(group);
 
     Groups after =app.group().all();
-    System.out.println("список после " + after);
-    System.out.println("размер после " + after.size());
+
+    //System.out.println("список после " + after);
+    //System.out.println("размер после " + after.size());
+
 
     assertThat(after.size(), equalTo(before.size()));
-
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
   }
 }

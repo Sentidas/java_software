@@ -3,15 +3,10 @@ package ru.sentidas.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.GroupData;
 import ru.sentidas.addressbook.model.Groups;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class GroupHelper extends HelperBase {
 
@@ -43,8 +38,6 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-
-
   public void selectGroupById(int id) {
     wd.findElement(By.cssSelector("input[value='"+ id + "']")).click();
   }
@@ -71,14 +64,11 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-
-
   public void delete(GroupData group) {
     selectGroupById(group.getId());
     deleteSelectedGroups();
     returnToGroupPage();
   }
-
 
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
@@ -87,8 +77,6 @@ public class GroupHelper extends HelperBase {
   public int getGroupCount() {
     return  wd.findElements(By.name("selected[]")).size();
   }
-
-
 
   public Groups all() {
     Groups groups = new Groups();

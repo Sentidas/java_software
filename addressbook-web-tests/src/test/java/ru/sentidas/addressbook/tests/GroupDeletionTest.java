@@ -33,13 +33,14 @@ public class GroupDeletionTest extends TestBase {
   public void testGroupDeletion() throws Exception {
 
     Groups before=app.group().all();
-    System.out.println("список до " + before);
-    System.out.println("размер до " + before.size());
+    //System.out.println("список до " + before);
+    //System.out.println("размер до " + before.size());
     GroupData deletedGroup = before.iterator().next();
     app.group().delete(deletedGroup);
     Groups after =app.group().all();
-    System.out.println("список после " + after);
-    System.out.println("размер после " + after.size());
+    //System.out.println("список после " + after);
+    //System.out.println("размер после " + after.size());
+
     assertThat(after.size(), equalTo(before.size()-1));
     assertThat(after, equalTo(before.withOut(deletedGroup)));
   }

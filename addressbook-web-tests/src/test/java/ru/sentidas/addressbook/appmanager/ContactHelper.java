@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.Contacts;
+import ru.sentidas.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -28,33 +29,39 @@ public class ContactHelper extends HelperBase {
   }
 
   public void fillContactForm(ContactData contactData , boolean creation) {
-    type(By.name("firstname"),contactData.getFirstname());
-    type(By.name("lastname"),contactData.getLastname());
 
-   if(creation) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-    type(By.name("address"),contactData.getAddress());
-    type(By.name("email"),contactData.getEmail());
-    type(By.name("mobile"),contactData.getMobile());
-  }
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("mobile"), contactData.getMobile());
 
+  }
   public void submitContactCreation() {
-    click(By.name("submit"));;
+    click(By.name("submit"));
   }
   public void returnToHomePage() {
     click(By.linkText("home page"));
   }
+  public void returnToHome() {
+    click(By.linkText("home"));
+  }
+
   public void selectContactForUpdate() {
     click(By.name("selected[]"));
   }
+
   public ContactData initContactEdition(ContactData contact) {
-    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",contact.getId()))).click();
+    int id = contact.getId();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
     return contact;
   }
-  public void submitContactDelition() {
+  public void submitContactDeletion() {
     click(By.xpath("//input[@value='Delete']"));
   }
 
@@ -67,13 +74,28 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void create(ContactData contactData, boolean b) {
+  public void create(ContactData contact, boolean b) {
     initContactCreation();
-    fillContactForm(contactData, b);
+    fillContactForm(contact, b);
     submitContactCreation();
     goToHomePage();
-
   }
+
+  public void modify(ContactData contact) {
+
+    selectContactById(contact.getId());
+    fillContactForm(contact , false);
+    submitContactModification();
+    returnToHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactForUpdate();
+    submitContactDeletion();
+    submitAlertOfDeletion();
+    returnToHome();
+  }
+
   public Contacts all() {
     Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -90,5 +112,10 @@ public class ContactHelper extends HelperBase {
   }
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
+
   }
 }

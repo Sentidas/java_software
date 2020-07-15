@@ -23,15 +23,19 @@ public class GroupCreationTest extends TestBase {
 
     app.goTo().GroupPage();
     Groups before=app.group().all();
-    System.out.println("список до " + before);
-    System.out.println("размер до " + before.size());
-    GroupData group = new GroupData().withName("test11");
+
+    //System.out.println("список до " + before);
+    //System.out.println("размер до " + before.size());
+
+    GroupData group = new GroupData().withName("test11").withHeader("test12").withFooter("test13");
     app.group().create(group);
     Groups after =app.group().all();
-    System.out.println("список после " + after);
-    System.out.println("размер после " + after.size());
-    assertThat(after.size(), equalTo(before.size()+1));
 
+    //System.out.println("список после " + after);
+    //System.out.println("размер после " + after.size());
+
+    // проверка
+    assertThat(after.size(), equalTo(before.size()+1));
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }

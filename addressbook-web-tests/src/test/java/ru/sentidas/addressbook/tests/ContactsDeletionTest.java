@@ -15,14 +15,14 @@ public class ContactsDeletionTest extends TestBase{
   @BeforeMethod
   public void ensurePrecontions() {
     if(app.contact().all().size()==0){
-
-      app.contact().create(new ContactData().withFirstname("Vasia").withLastname("Petrovich")
-              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru"), true);
+      ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
+              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
+      app.contact().create(contact , true );
     }
   }
 
   @Test
-  public void testGroupCreation() throws Exception {
+  public void testContactDeletion() throws Exception {
 
     Contacts before=app.contact().all();
     System.out.println("список до " + before);
@@ -30,11 +30,10 @@ public class ContactsDeletionTest extends TestBase{
 
     ContactData deletedContact = before.iterator().next();
 
-   app.contact().selectContactForUpdate();
-   app.contact().submitContactDelition();
-   app.contact().submitAlertOfDeletion();
+    app.contact().delete(deletedContact);
 
-    Contacts after=app.contact().all();
+    Contacts after =app.contact().all();
+
     System.out.println("список после " + after);
     System.out.println("размер после " + after.size());
     assertThat(after.size(), equalTo(before.size()-1));
