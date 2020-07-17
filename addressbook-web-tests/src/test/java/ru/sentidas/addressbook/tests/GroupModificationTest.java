@@ -34,6 +34,7 @@ public class GroupModificationTest  extends TestBase {
             .withId(modifiedGroup.getId()).withName("test3").withHeader("юля").withFooter("test4");
 
     app.group().modify(group);
+    assertThat(app.group().count(), equalTo(before.size()));
 
     Groups after =app.group().all();
 
@@ -41,7 +42,7 @@ public class GroupModificationTest  extends TestBase {
     //System.out.println("размер после " + after.size());
 
 
-    assertThat(after.size(), equalTo(before.size()));
+
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
   }
 }
