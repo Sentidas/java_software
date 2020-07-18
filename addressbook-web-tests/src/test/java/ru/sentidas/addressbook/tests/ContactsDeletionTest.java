@@ -31,12 +31,11 @@ public class ContactsDeletionTest extends TestBase{
     ContactData deletedContact = before.iterator().next();
 
     app.contact().delete(deletedContact);
-
+    assertThat(app.contact().count(), equalTo(before.size()-1));
     Contacts after =app.contact().all();
 
     System.out.println("список после " + after);
     System.out.println("размер после " + after.size());
-    assertThat(after.size(), equalTo(before.size()-1));
     assertThat(after, equalTo(before.withOut(deletedContact)));
   }
 }

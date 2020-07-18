@@ -39,6 +39,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getMobile());
 
   }
+
+  public int count() {
+    return  wd.findElements(By.name("selected[]")).size();
+  }
   public void submitContactCreation() {
     click(By.name("submit"));
   }

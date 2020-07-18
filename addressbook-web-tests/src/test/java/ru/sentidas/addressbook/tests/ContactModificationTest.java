@@ -36,13 +36,14 @@ public class ContactModificationTest extends TestBase {
 
 
     app.contact().modify(contact);
-
+    System.out.println(app.contact().count());
+    assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after =app.contact().all();
 
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());
 
-    assertThat(after.size(), equalTo(before.size()));
+
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));
   }
 }
