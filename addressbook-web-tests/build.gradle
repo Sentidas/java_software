@@ -9,5 +9,6 @@ dependencies {
     implementation 'com.applitools:eyes-selenium-java3:3.168.1'
     implementation 'it.ozimov:hamcrest:2.0.0'
     implementation 'com.beust:jcommander:1.78'
-
+    implementation 'com.thoughtworks.xstream:xstream-distribution:1.4.12'
+    implementation 'com.thoughtworks.xstream:xstream-parent:1.4.12'
 }
