@@ -1,15 +1,9 @@
 package ru.sentidas.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.sentidas.addressbook.model.GroupData;
 import ru.sentidas.addressbook.model.Groups;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
@@ -17,17 +11,22 @@ import static org.hamcrest.MatcherAssert.*;
 
 public class GroupCreationTest extends TestBase {
 
+  @DataProvider
+  public Iterator<Object[]> validGroups(){
+    List<Object[]>list = new ArrayList<>();
+    list.add(new Object[] {new GroupData().withName("test1").withHeader("header1").withFooter("footer1")});
+    list.add(new Object[] {new GroupData().withName("test2").withHeader("header2").withFooter("footer2")});
+    list.add(new Object[] {new GroupData().withName("test3").withHeader("header3").withFooter("footer3")});
+    return  list.iterator();
+  }
 
-  @Test
-  public void testGroupCreation() throws Exception {
-
+  @Test (dataProvider = "validGroups")
+  public void testGroupCreation(GroupData group) throws Exception {
     app.goTo().GroupPage();
     Groups before=app.group().all();
 
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
-
-    GroupData group = new GroupData().withName("test11").withHeader("test12").withFooter("test13");
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size()+1));
     Groups after =app.group().all();
@@ -42,7 +41,7 @@ public class GroupCreationTest extends TestBase {
   }
 
 
-  @Test
+  @Test (enabled = false)
   public void testBadGroupCreation() throws Exception {
 
     app.goTo().GroupPage();
