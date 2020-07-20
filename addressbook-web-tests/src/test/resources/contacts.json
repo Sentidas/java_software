@@ -1,0 +1,32 @@
+[
+  {
+    "firstname": "Anton0",
+    "lastname": "Bokov0",
+    "address": "Moscow,18 - 0",
+    "mobilePhone": "8(909)765-43-90",
+    "homePhone": "8495765430",
+    "email": "Bokov0@ya.ru ",
+    "email2": "Bokov0@gmail.ru",
+    "email3": "Bokov0@yahoo.ru "
+  },
+  {
+    "firstname": "Anton1",
+    "lastname": "Bokov1",
+    "address": "Moscow,18 - 1",
+    "mobilePhone": "8(909)765-43-91",
+    "homePhone": "8495765431",
+    "email": "Bokov1@ya.ru ",
+    "email2": "Bokov1@gmail.ru",
+    "email3": "Bokov1@yahoo.ru "
+  },
+  {
+    "firstname": "Anton2",
+    "lastname": "Bokov2",
+    "address": "Moscow,18 - 2",
+    "mobilePhone": "8(909)765-43-92",
+    "homePhone": "8495765432",
+    "email": "Bokov2@ya.ru ",
+    "email2": "Bokov2@gmail.ru",
+    "email3": "Bokov2@yahoo.ru "
+  }
+]
