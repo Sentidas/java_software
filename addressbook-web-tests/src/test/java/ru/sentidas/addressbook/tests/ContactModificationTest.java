@@ -19,7 +19,7 @@ public class ContactModificationTest extends TestBase {
     if(app.contact().all().size()==0){
       ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
               .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
-      app.contact().create(contact , true );
+      app.contact().create(contact, true);
     }
   }
   @Test

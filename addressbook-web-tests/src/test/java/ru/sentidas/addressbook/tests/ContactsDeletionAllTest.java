@@ -16,7 +16,7 @@ import ru.sentidas.addressbook.model.ContactData;
       }
     }
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void testContactDeletionAll() throws Exception {
       app.contact().deleteAll();
     }
