@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 import ru.sentidas.addressbook.model.GroupData;
 import ru.sentidas.addressbook.model.Groups;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

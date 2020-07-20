@@ -1,0 +1,32 @@
+<list>
+  <contact>
+    <firstname>Anton0</firstname>
+    <lastname>Bokov0</lastname>
+    <address>Moscow,18 - 0</address>
+    <mobilePhone>8(909)765-43-90</mobilePhone>
+    <homePhone>8495765430</homePhone>
+    <email>Bokov0@ya.ru </email>
+    <email2>Bokov0@gmail.ru</email2>
+    <email3>Bokov0@yahoo.ru </email3>
+  </contact>
+  <contact>
+    <firstname>Anton1</firstname>
+    <lastname>Bokov1</lastname>
+    <address>Moscow,18 - 1</address>
+    <mobilePhone>8(909)765-43-91</mobilePhone>
+    <homePhone>8495765431</homePhone>
+    <email>Bokov1@ya.ru </email>
+    <email2>Bokov1@gmail.ru</email2>
+    <email3>Bokov1@yahoo.ru </email3>
+  </contact>
+  <contact>
+    <firstname>Anton2</firstname>
+    <lastname>Bokov2</lastname>
+    <address>Moscow,18 - 2</address>
+    <mobilePhone>8(909)765-43-92</mobilePhone>
+    <homePhone>8495765432</homePhone>
+    <email>Bokov2@ya.ru </email>
+    <email2>Bokov2@gmail.ru</email2>
+    <email3>Bokov2@yahoo.ru </email3>
+  </contact>
+</list>

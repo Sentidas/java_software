@@ -25,7 +25,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void fillContactForm(ContactData contactData , boolean creation) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
 
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
@@ -36,7 +36,11 @@ public class ContactHelper extends HelperBase {
     //}
     type(By.name("address"), contactData.getAddress());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("mobile"), contactData.getMobile());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
 
   }
 
@@ -75,7 +79,7 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void create(ContactData contact, boolean b) {
+  public void create(ContactData contact,boolean b) {
     initContactCreation();
     fillContactForm(contact, b);
     submitContactCreation();
@@ -85,13 +89,21 @@ public class ContactHelper extends HelperBase {
   public void modify(ContactData contact) {
 
     selectContactById(contact.getId());
-    fillContactForm(contact , false);
+    fillContactForm(contact,false);
     submitContactModification();
     returnToHomePage();
   }
 
   public void delete(ContactData contact) {
-    selectContactForUpdate();
+    selectContactById(contact.getId());
+    submitContactDeletion();
+    //submitAlertOfDeletion();
+    returnToHome();
+  }
+  public void deleteAll() {
+    {
+      click(By.id("MassCB"));
+    }
     submitContactDeletion();
     submitAlertOfDeletion();
     returnToHome();

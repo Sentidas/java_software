@@ -17,7 +17,7 @@ public class ContactsDeletionTest extends TestBase{
     if(app.contact().all().size()==0){
       ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
               .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
-      app.contact().create(contact , true );
+      app.contact().create(contact, true);
     }
   }
 
@@ -31,11 +31,13 @@ public class ContactsDeletionTest extends TestBase{
     ContactData deletedContact = before.iterator().next();
 
     app.contact().delete(deletedContact);
-    assertThat(app.contact().count(), equalTo(before.size()-1));
+
+
     Contacts after =app.contact().all();
 
     System.out.println("список после " + after);
     System.out.println("размер после " + after.size());
+    assertThat(app.contact().count(), equalTo(before.size()-1));
     assertThat(after, equalTo(before.withOut(deletedContact)));
   }
 }
