@@ -52,26 +52,27 @@ public class GroupDataGenerator {
     XStream xstream = new XStream();
     xstream.processAnnotations(GroupData.class);
     String xml = xstream.toXML(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {// инициализация ресурса
+      writer.write(xml);   // использование ресурса
+    }// автоматическое закрытие файла на запись,минуя writer.close(); (доступно с java7)
   }
 
   private void saveAsJson(List<GroupData> groups, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
-  }
-  private  void saveAsCsv(List<GroupData> groups, File file) throws IOException {
-    Writer writer = new FileWriter(file);
-    for (GroupData group : groups) {
-      writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(json);
     }
-    writer.close();
 
   }
+  private  void saveAsCsv(List<GroupData> groups, File file) throws IOException {
+    try (Writer writer = new FileWriter(file)) {
+      for (GroupData group : groups) {
+        writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+      }
+    }
+  }
+
 
   private  List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<>();
