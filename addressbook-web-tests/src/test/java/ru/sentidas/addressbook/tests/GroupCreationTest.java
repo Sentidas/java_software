@@ -3,6 +3,8 @@ package ru.sentidas.addressbook.tests;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 import ru.sentidas.addressbook.model.GroupData;
 import ru.sentidas.addressbook.model.Groups;
@@ -18,6 +20,8 @@ import static org.hamcrest.MatcherAssert.*;
 
 
 public class GroupCreationTest extends TestBase {
+
+
 
   @DataProvider
   public Iterator<Object[]> validGroupsFromXml() throws IOException {
@@ -56,6 +60,7 @@ public class GroupCreationTest extends TestBase {
 
   @Test (dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) throws Exception {
+
     app.goTo().GroupPage();
     Groups before=app.group().all();
 
@@ -72,6 +77,7 @@ public class GroupCreationTest extends TestBase {
 
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+
   }
 
 
