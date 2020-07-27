@@ -1,0 +1,16 @@
+9124 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactCreation with parameters [ContactData{firstname='Anton0', lastname='Bokov0', address='Moscow,18 - 0', id=2147483647, group='null', mobilePhone='8(909)765-43-90', homePhone='8495765430', workPhone='null', allPhones='null', email='Bokov0@ya.ru ', email2='Bokov0@gmail.ru', email3='Bokov0@yahoo.ru ', allEmails='null'}]
+35488 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactCreation
+35491 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactCreation with parameters [ContactData{firstname='Anton1', lastname='Bokov1', address='Moscow,18 - 1', id=2147483647, group='null', mobilePhone='8(909)765-43-91', homePhone='8495765431', workPhone='null', allPhones='null', email='Bokov1@ya.ru ', email2='Bokov1@gmail.ru', email3='Bokov1@yahoo.ru ', allEmails='null'}]
+62745 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactCreation
+62746 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactCreation with parameters [ContactData{firstname='Anton2', lastname='Bokov2', address='Moscow,18 - 2', id=2147483647, group='null', mobilePhone='8(909)765-43-92', homePhone='8495765432', workPhone='null', allPhones='null', email='Bokov2@ya.ru ', email2='Bokov2@gmail.ru', email3='Bokov2@yahoo.ru ', allEmails='null'}]
+89458 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactCreation
+89466 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactModification with parameters []
+122099 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactModification
+122105 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactDeletion with parameters []
+152568 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactDeletion
+152571 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactPhones with parameters []
+162140 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactPhones
+162143 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactEmails with parameters []
+177455 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactEmails
+177459 [Test worker] INFO  r.s.addressbook.tests.TestBase - Start  testContactAddress with parameters []
+193382 [Test worker] INFO  r.s.addressbook.tests.TestBase - Stop  testContactAddress
