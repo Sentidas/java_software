@@ -9,20 +9,33 @@ dependencies {
     implementation 'com.applitools:eyes-selenium-java3:3.168.1'
     implementation 'it.ozimov:hamcrest:2.0.0'
     implementation 'com.beust:jcommander:1.78'
-    implementation 'com.thoughtworks.xstream:xstream-distribution:1.4.12'
-    implementation 'com.thoughtworks.xstream:xstream-parent:1.4.12'
+    //implementation 'com.thoughtworks.xstream:xstream-distribution:1.4.12'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.8'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'mysql:mysql-connector-java:8.0.21'
+    implementation 'mysql:mysql-connector-java:8.0.11'
+    implementation 'org.hibernate:hibernate-core:5.3.7.Final'
 }
 task testGroups (type: Test) {
         useTestNG {
             suites 'src/test/resources/testng-groups.xml'
         }
+    if (project.hasProperty('browser')){
+        systemProperty('browser', "${browser}")
+    }
+    if (project.hasProperty('target')){
+        systemProperty('target', "${target}")
+    }
     }
 
 task testContacts (type: Test) {
         useTestNG {
             suites 'src/test/resources/testng-contacts.xml'
         }
+    if (project.hasProperty('browser')){
+        systemProperty('browser', "${browser}")
+    }
+    if (project.hasProperty('target')){
+        systemProperty('target', "${target}")
+    }
     }
 
