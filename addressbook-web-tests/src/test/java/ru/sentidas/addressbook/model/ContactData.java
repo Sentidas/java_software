@@ -3,38 +3,75 @@ package ru.sentidas.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
+import java.io.File;
 import java.util.Objects;
 
+@Entity
+@Table(name="addressbook")
 @XStreamAlias("contact")
 public class ContactData {
   @Expose
+  @Column(name="firstname")
   private String firstname;
   @Expose
+  @Column(name="lastname")
+
   private String lastname;
   @Expose
+  @Column(name="address")
+  @Type(type = "text")
   private String address;
 
   @XStreamOmitField
+  @Id
+  @Column(name="id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Transient
   private String group;
   @Expose
+  @Column(name="mobile")
+  @Type(type = "text")
   private String mobilePhone;
   @Expose
+  @Column(name="home")
+  @Type(type = "text")
   private String homePhone;
   @Expose
+  @Column(name="work")
+  @Type(type = "text")
   private String workPhone;
   @Expose
+  @Transient
   private String allPhones;
   @Expose
+  @Column(name="email")
+  @Type(type = "text")
   private String email;
   @Expose
+  @Column(name="email2")
+  @Type(type = "text")
   private String email2;
   @Expose
+  @Column(name="email3")
+  @Type(type = "text")
   private String email3;
+  @Transient
   private String allEmails;
+  @Column(name="photo")
+  @Type(type = "text")
+  private String photo;
 
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  public void setPhoto(File photo) {
+    this.photo = photo.getPath();
+  }
 
   public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
