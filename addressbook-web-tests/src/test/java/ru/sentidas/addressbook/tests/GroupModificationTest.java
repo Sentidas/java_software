@@ -17,26 +17,27 @@ import static org.testng.Assert.*;
 public class GroupModificationTest  extends TestBase {
   @BeforeMethod
   public void ensurePrecontions() {
-    app.goTo().GroupPage();
-    if(app.group().all().size()==0){
+
+    if(app.db().groups().size()==0){
+      app.goTo().GroupPage();
       app.group().create(new GroupData().withName("test3"));
     }
   }
   @Test
   public void testGroupModification() {
 
-    Groups before=app.group().all();
+    Groups before=app.db().groups();
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
     GroupData modifiedGroup = before.iterator().next();
 
     GroupData group = new GroupData()
             .withId(modifiedGroup.getId()).withName("test3").withHeader("юля").withFooter("test4");
-
+    app.goTo().GroupPage();
     app.group().modify(group);
     assertThat(app.group().count(), equalTo(before.size()));
 
-    Groups after =app.group().all();
+    Groups after =app.db().groups();
 
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());

@@ -58,11 +58,11 @@ public class ContactCreationTest extends TestBase {
   @Test (dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
 
-    Contacts before = app.contact().all();
+    Contacts before =app.db().contacts();
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
     app.contact().create(contact, true);
-    Contacts  after = app.contact().all();
+    Contacts  after =app.db().contacts();
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());
 

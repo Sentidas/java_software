@@ -72,6 +72,7 @@ public class ContactDataGenerator {
                         .withAddress(String.format("Moscow,18 - %s", i)).withEmail(String.format("Bokov%s@ya.ru ", i))
                         .withEmail2(String.format("Bokov%s@gmail.ru", i)).withEmail3(String.format("Bokov%s@yahoo.ru ", i))
                         .withMobilePhone(String.format("8(909)765-43-9%s", i)).withHomePhone(String.format("849576543%s", i))
+                .withWorkPhone(String.format("849987654%s", i))
                        );
       }
       return contacts;

@@ -62,13 +62,13 @@ public class GroupCreationTest extends TestBase {
   public void testGroupCreation(GroupData group) throws Exception {
 
     app.goTo().GroupPage();
-    Groups before=app.group().all();
+    Groups before=app.db().groups();
 
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size()+1));
-    Groups after =app.group().all();
+    Groups after =app.db().groups();
 
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());

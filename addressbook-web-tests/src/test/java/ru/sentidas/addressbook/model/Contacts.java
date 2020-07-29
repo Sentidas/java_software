@@ -2,7 +2,9 @@ package ru.sentidas.addressbook.model;
 
 import com.google.common.collect.ForwardingSet;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -16,6 +18,10 @@ import java.util.Set;
 
     public Contacts() {
       this.delegate = new HashSet<>();
+    }
+
+    public Contacts(Collection<ContactData> contacts) {
+      this.delegate = new HashSet<>(contacts);
     }
 
     @Override
