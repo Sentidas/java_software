@@ -10,7 +10,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.GroupData;
+import ru.sentidas.addressbook.model.Groups;
+
 import java.util.List;
+
+import static ru.sentidas.addressbook.tests.TestBase.app;
 
 public class HbConnectionTest {
 
@@ -39,7 +43,11 @@ public class HbConnectionTest {
     session.beginTransaction();
     List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
     for (ContactData contact : result) {
+      System.out.println(contact.getId());
       System.out.println(contact);
+      System.out.println(contact.getGroups());
+
+
     }
     session.getTransaction().commit();
     session.close();

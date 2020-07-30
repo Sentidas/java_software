@@ -38,12 +38,11 @@ public class GroupModificationTest  extends TestBase {
     assertThat(app.group().count(), equalTo(before.size()));
 
     Groups after =app.db().groups();
-
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());
 
-
-
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
+    verifyGroupListUI();
   }
+
 }

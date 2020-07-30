@@ -7,6 +7,7 @@ import org.testng.annotations.*;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.Contacts;
 import ru.sentidas.addressbook.model.GroupData;
+import ru.sentidas.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -57,11 +58,19 @@ public class ContactCreationTest extends TestBase {
 
   @Test (dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
+    Groups groups=app.db().groups();
+    if (groups.size()==0) {
+      GroupData newGroup= new GroupData().withName("test1").withHeader("test1").withFooter("test1");
+      app.goTo().GroupPage();
+      app.group().create(newGroup);
+    } else {
+      Contacts before = app.db().contacts();
+      File photo = new File("src/test/resources/1.jpg");
+      ContactData newContact = contact.inGroup(groups.iterator().next()).withFhoto(photo);
 
-    Contacts before =app.db().contacts();
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
-    app.contact().create(contact, true);
+    app.contact().create(newContact, true);
     Contacts  after =app.db().contacts();
     //System.out.println("список после " + after);
     //System.out.println("размер после " + after.size());
@@ -71,6 +80,8 @@ public class ContactCreationTest extends TestBase {
     assertThat(after.size(), equalTo(before.size()+1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-  }
+    verifyContactListUI();
+
+  }}
 }
 

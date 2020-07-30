@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.sentidas.addressbook.model.ContactData;
 import ru.sentidas.addressbook.model.Contacts;
 import ru.sentidas.addressbook.model.GroupData;
+import ru.sentidas.addressbook.model.Groups;
 
 import java.util.Comparator;
 
@@ -16,15 +17,16 @@ public class ContactModificationTest extends TestBase {
 
   @BeforeMethod
   public void ensurePrecontions() {
+    Groups groups=app.db().groups();
     if(app.db().contacts().size()==0){
       ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
-              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
+              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").inGroup(groups.iterator().next());
       app.contact().create(contact, true);
     }
   }
   @Test
   public void testContactModification() throws Exception {
-
+    Groups groups=app.db().groups();
     Contacts before=app.db().contacts();
     //System.out.println("список до " + before);
     //System.out.println("размер до " + before.size());
@@ -32,7 +34,8 @@ public class ContactModificationTest extends TestBase {
     ContactData modifiedContact = before.iterator().next();
 
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Mi").withLastname("Petrova").withAddress("Volgograd, Mira, 5-98")
-    .withEmail("petrov@ya.ru").withEmail2("petrov@gm.com").withEmail3("petrov@mail.ru").withMobilePhone("89261547865").withHomePhone("84956778900").withWorkPhone("84998776543");
+    .withEmail("petrov@ya.ru").withEmail2("petrov@gm.com").withEmail3("petrov@mail.ru").withMobilePhone("89261547865").withHomePhone("84956778900")
+            .withWorkPhone("84998776543");
 
 
     app.contact().modify(contact);
@@ -45,6 +48,9 @@ public class ContactModificationTest extends TestBase {
 
 
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));
+    verifyContactListUI();
   }
+
+
 }
 

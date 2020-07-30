@@ -15,8 +15,9 @@ public class ContactsDeletionTest extends TestBase{
   @BeforeMethod
   public void ensurePrecontions() {
     if(app.db().contacts().size()==0){
+      Groups groups=app.db().groups();
       ContactData contact = new ContactData().withFirstname("V").withLastname("Petrovich")
-              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").withGroup("test3");
+              .withAddress("Volgograd, Mira, 5-98").withEmail("petrov@ya.ru").inGroup(groups.iterator().next());
       app.contact().create(contact, true);
     }
   }
@@ -39,6 +40,7 @@ public class ContactsDeletionTest extends TestBase{
     System.out.println("размер после " + after.size());
     assertThat(app.contact().count(), equalTo(before.size()-1));
     assertThat(after, equalTo(before.withOut(deletedContact)));
+    verifyContactListUI();
   }
 }
 
